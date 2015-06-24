@@ -54,6 +54,14 @@ function time_theme_pro_init() {
 	$action_base = elgg_get_plugins_path() . 'time_theme_pro/actions';
 	elgg_register_action("time_theme_pro/reset", "$action_base/reset.php");
 
+	//cover
+	elgg_register_page_handler('cover', 'elgg_cover_page_handler');
+	elgg_register_js('cover_cropper', 'mod/time_theme_pro/lib/cover/ui.cover_cropper.js');
+	elgg_register_action("cover/upload", "$action_base/cover/upload.php");
+	elgg_register_action("cover/crop", "$action_base/cover/crop.php");
+	elgg_register_action("cover/remove", "$action_base/cover/remove.php");
+	elgg_register_plugin_hook_handler('register', 'menu:user_hover', 'elgg_user_cover_hover_menu');
+
 	//set default settings values 
 	time_theme_pro_set_defaults();
 }
@@ -78,6 +86,25 @@ function river_auto_update_page_handler($page) {
 	
 	require_once($base."/pages/river.php");
 	return true;
+}
+
+function elgg_cover_page_handler($page) {
+	$base = elgg_get_plugins_path() . 'time_theme_pro';
+
+	$user = get_user_by_username($page[1]);
+	if ($user) {
+		elgg_set_page_owner_guid($user->getGUID());
+	}
+
+	if ($page[0] == 'edit') {
+		require_once("{$base}/pages/cover/edit.php");
+		return true;
+	} else {
+		set_input('size', $page[2]);
+		require_once("{$base}/pages/cover/view.php");
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -261,6 +288,14 @@ function time_theme_pro_pagesetup() {
 				elgg_register_menu_item('extras', $item);
 			}
 		}
+
+		elgg_register_menu_item('page', array(
+			'name' => 'edit_cover',
+			'href' => "cover/edit/{$username}",
+			'text' => elgg_echo('cover:edit'),
+			'section' => '1_profile',
+			'contexts' => array('settings'),
+		));
 		
 	}
 }
@@ -355,8 +390,12 @@ function extractability($url, $object){
 	$excerpt = null;
 	$config = elgg_get_plugin_setting('extractability', 'time_theme_pro');
 	if($config!='disabled'){
-		$api_key = "abcde";
-		$wp_annotations = $object->getAnnotations('web_scraper',1);
+		$api_key = "30f3da72547b708b42bf3c2c2a02cdc00fbf0f2b";
+		$wp_annotations = $object->getAnnotations(array(
+				  'annotation_name' => 'web_scraper',
+				  'limit' => 1
+				  ));
+
 		if(count($wp_annotations)==0){					
 			$scraper_json = file_get_contents("http://extractability.fernandovega.mx/method/get.json?api_key=".$api_key."&url=".$url);
 			$scraper = json_decode($scraper_json);
@@ -394,7 +433,7 @@ function my_likes_entity_menu_setup($hook, $type, $return, $params) {
 	/* @var ElggEntity $entity */
 
 	if ($entity->canAnnotate(0, 'likes')) {
-		$hasLiked = elgg_annotation_exists($entity->guid, 'likes');
+		$hasLiked = \Elgg\Likes\DataService::instance()->currentUserLikesEntity($entity->guid);
 		
 		// Always register both. That makes it super easy to toggle with javascript
 		$return[] = ElggMenuItem::factory(array(
@@ -405,6 +444,7 @@ function my_likes_entity_menu_setup($hook, $type, $return, $params) {
 			'item_class' => $hasLiked ? 'hidden' : '',
 			'priority' => 100,
 		));
+		
 		$return[] = ElggMenuItem::factory(array(
 			'name' => 'unlike',
 			'href' => elgg_add_action_tokens_to_url("/action/likes/delete?guid={$entity->guid}"),
@@ -460,7 +500,7 @@ function my_likes_river_menu_setup($hook, $type, $return, $params) {
 		return;
 	}
 
-	$hasLiked = elgg_annotation_exists($entity->guid, 'likes');
+	$hasLiked = \Elgg\Likes\DataService::instance()->currentUserLikesEntity($object->guid);
 
 	// Always register both. That makes it super easy to toggle with javascript
 	$return[] = ElggMenuItem::factory(array(
@@ -584,5 +624,59 @@ function _my_elgg_entity_menu_setup($hook, $type, $return, $params) {
 	}
 
 	return $return;
+}
+
+function elgg_user_cover_hover_menu($hook, $type, $return, $params) {
+	$user = $params['entity'];
+	/* @var \ElggUser $user */
+
+	if (elgg_is_logged_in()) {
+		if (elgg_get_logged_in_user_guid() == $user->guid) {
+			$url = "cover/edit/$user->username";
+			$item = new \ElggMenuItem('cover:edit', elgg_echo('cover:edit'), $url);
+			$item->setSection('action');
+			$return[] = $item;
+		}
+	}
+
+	return $return;
+}
+
+global $CONFIG;
+
+//if (!isset($CONFIG->cover_sizes)) { 
+	$cover_sizes = array(                
+				'topbar' => array('w' => 320, 'h' => 95, 'square' => FALSE, 'upscale' => FALSE),
+				'tiny' => array('w' => 900, 'h' => 200, 'square' => FALSE, 'upscale' => FALSE),
+				'small' => array('w' => 320, 'h' => 180, 'square' => FALSE, 'upscale' => FALSE),
+				'medium' => array('w' => 400, 'h' => 200, 'square' => FALSE, 'upscale' => FALSE),
+				'large' => array('w' => 1000, 'h' => 400, 'square' => FALSE, 'upscale' => FALSE),
+				'master' => array('w' => 1000, 'h' => 990, 'square' => FALSE, 'upscale' => FALSE),
+			  );
+	elgg_set_config('cover_sizes', $cover_sizes);
+//}
+
+function getCoverIconUrl($size) {
+
+	//$size = elgg_strtolower($size);
+	$owner = elgg_get_page_owner_entity();
+	//$user_guid = $user->
+	$icon_time = $owner->covertime;  
+	// Get the size
+	//$size = strtolower(get_input('size'));
+	if (!in_array($size, array('master', 'large', 'medium', 'small', 'tiny', 'topbar'))) {
+		$size = 'medium';
+	}
+
+	// If user exist, return default icon
+	if ($icon_time) {
+    $uploaded_url = "cover/view/$owner->username/$size/$icon_time";
+    return elgg_normalize_url($uploaded_url);	
+	} 
+	else{
+	  $default_url = "mod/time_theme_pro/graphics/cover/$size.jpg"; 
+		   
+		return elgg_normalize_url($default_url);
+	}
 }
 

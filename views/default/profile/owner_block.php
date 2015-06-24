@@ -35,19 +35,26 @@ $profile_actions = '';
 if (elgg_is_logged_in() && $actions) {
 	$profile_actions = '<ul class="elgg-menu profile-action-menu mvm">';
 	foreach ($actions as $action) {
-		$item = elgg_view_menu_item($action, array('class' => 'elgg-button elgg-button-action'));
+		$item = elgg_view_menu_item($action, array('class' => 'elgg-action-a'));
 		$profile_actions .= "<li class=\"{$action->getItemClass()}\">$item</li>";
 	}
 	$profile_actions .= '</ul>';
 }
 
-
-
 echo <<<HTML
 
 <div id="profile-owner-block">
-	$icon
-	$profile_actions
+	$icon	
+</div>
+<div class="elgg-profile-name">
+	<span class="nickname p-nickname">@$user->username</span>
+	<h2 class="p-name fn">$user->name</h2>
+</div>
+<div id="elgg-profile-config">
+	<a href="#config" id="profile-config-botom"><i class="fa fa-2x fa-ellipsis-v"></i></a>
+	<div id="elgg-profile-actions">
+		$profile_actions
+	</div>
 </div>
 
 HTML;

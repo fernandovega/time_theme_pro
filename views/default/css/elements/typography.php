@@ -23,11 +23,7 @@ body {
 	  -webkit-font-smoothing: antialiased;
   font-family: 'Lato', 'Sans-Serif';
   font-weight: lighter;
-  <?php if($background_type=='imagen'): ?>
-	background: url("<?php echo elgg_get_site_url();?>mod/time_theme_pro/graphics/b3.jpg") no-repeat fixed center 0 <?php echo $content_background_color ?>;
-  <?php else:; ?>
   background-color: <?php echo $content_background_color ?>
-  <?php endif; ?>
 }
 
 a {

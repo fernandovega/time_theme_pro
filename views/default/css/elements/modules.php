@@ -93,6 +93,7 @@
 	margin: 15px;
 	position: absolute;
 	right: 20px;
+	z-index: 999;
 }
 .elgg-widgets-add-panel {
 	padding: 10px;

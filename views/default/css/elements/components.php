@@ -261,9 +261,8 @@ $content_button_color = elgg_get_plugin_setting('content_button_color', 'time_th
 	width: 78%;
 }
 .elgg-river-item input[type=submit] {
-	margin: 0 0 0 10px;
+	margin: 0 0 0 5px;
 }
-
 
 .elgg-river-subject{
 	font-weight: bold;

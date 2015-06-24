@@ -11,6 +11,8 @@
  */
 $topbar_background_color = elgg_get_plugin_setting('topbar_background_color', 'time_theme_pro');
 $content_button_color = elgg_get_plugin_setting('content_button_color', 'time_theme_pro');
+ $content_background_color = elgg_get_plugin_setting('content_background_color', 'time_theme_pro');
+$background_type = elgg_get_plugin_setting('background_type', 'time_theme_pro');
 
 ?>
 /* <style> /**/
@@ -21,7 +23,12 @@ $content_button_color = elgg_get_plugin_setting('content_button_color', 'time_th
 /***** DEFAULT LAYOUT ******/
 <?php // the width is on the page rather than topbar to handle small viewports ?>
 .elgg-page-default {  
-  min-width: 800px;
+  min-width: 800px;   
+<?php if($background_type=='imagen'): ?>
+  background: url("<?php echo elgg_get_site_url();?>mod/time_theme_pro/graphics/b1.jpg") no-repeat fixed center 0 <?php echo $content_background_color ?>;
+  <?php else:; ?>
+  background-color: <?php echo $content_background_color ?>
+  <?php endif; ?>
 }
 .elgg-page-default .elgg-page-header > .elgg-inner {
 	max-width: 990px;
@@ -123,6 +130,7 @@ $content_button_color = elgg_get_plugin_setting('content_button_color', 'time_th
 	min-height: 360px;
 	padding: 12px 15px;
 }
+
 .elgg-main > .elgg-head {
 	padding-bottom: 10px;
 	margin-bottom: 0px;

@@ -1253,6 +1253,7 @@
   border-radius: 50%;
   width: 24px;
   float: left;
+  border: 2px solid #fff;
 }
 .elgg-avatar-tiny > a > img {
   width: 25px;

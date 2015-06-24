@@ -314,13 +314,7 @@ html {
 		border-right: none;
 		width: auto;
 	}
-	#profile-details {
-		display: block;
-		float: right;
-		width: 70%;
-	}
 
-	
 	.elgg-avatar-topbar{
 		display: none;
 	}
@@ -375,7 +369,6 @@ html {
 	display: block;
 	width: auto;
 	word-wrap: break-word;
-	margin: 5px 0 0;
 	overflow: visible;
 }
 
@@ -452,4 +445,99 @@ h1, h2, h3, h4, h5, h6 {
 	display: none;
 }
 
+.elgg-cover {
+    background-size: 945px;
+    display: block;
+    height: 250px;
+    width: 945px;
+}
 
+#profile-owner-block {
+    float: left;
+    height: 200px;
+    margin-top: 20px;
+    padding: 15px;
+    color: #fff;
+ }
+
+.profile-details {
+	padding: 0px
+}
+
+.elgg-profile-name{
+	float: left;
+	margin: 170px 0 0 10px;
+}
+
+#elgg-profile-actions{
+  display: none;
+  background: #000;
+  bottom: 0;
+  margin: 10px;
+  min-width: 120px;
+  position: absolute;
+  right: 0;
+}
+
+#elgg-profile-config{
+  position:absolute;
+  bottom:0;
+  right:0;
+  margin: 15px;
+}
+
+#elgg-profile-config a{
+  text-shadow: 1px 1px 2px #000;
+  color: #fff;  
+}
+
+#elgg-profile-config a:hover{
+  text-decoration: none;
+  text-transform: none;
+}
+
+#elgg-profile-actions li a:hover{
+  color: #fff;
+}
+
+.profile h2, .nickname{
+	text-shadow: 1px 1px 2px #000;
+	color: #fff;
+}
+
+.profile .nickname {
+    font-size: 1.5em;
+    line-height: 1.1em;
+}
+
+
+.elgg-action-a{
+	color: #fff;
+}
+
+.theme-sandbox-main {
+    float: right;
+    min-height: 360px;
+    padding: 20px;
+    position: relative;
+    width: 80%;
+}
+
+#profile-details-info{
+  display: none
+}
+
+#profile-button{
+  margin-bottom: 10px;
+}
+
+#profile-button a{
+  color: #000;
+  font-size: 120%;  
+  padding: 5px;
+}
+
+#profile-button a:hover{
+  text-decoration: none;
+  text-transform: none;
+}

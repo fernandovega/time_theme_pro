@@ -9,9 +9,8 @@ $user = elgg_get_page_owner_entity();
 $profile_fields = elgg_get_config('profile_fields');
 
 echo '<div id="profile-details" class="elgg-body pll">';
-echo "<span class=\"hidden nickname p-nickname\">{$user->username}</span>";
-echo "<h2 class=\"p-name fn\">{$user->name}</h2>";
-
+echo '<div id="profile-button"><a href="#" ><i class="fa fa-lg fa-user"></i> &nbsp;&nbsp;'.elgg_echo('profile:show').'</a></div>';
+echo '<div id="profile-details-info" class="elgg-body pll">';
 // the controller doesn't allow non-admins to view banned users' profiles
 if ($user->isBanned()) {
 	$title = elgg_echo('banned');
@@ -72,5 +71,5 @@ if ($user->description) {
 	echo elgg_view('output/longtext', array('value' => $user->description, 'class' => 'mtn'));
 	echo "</div>";
 }
-
+echo '</div>';
 echo '</div>';

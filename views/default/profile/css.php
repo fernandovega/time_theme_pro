@@ -15,7 +15,7 @@
 }
 
 .profile h2 {
-    font-size: 2.3em;
+    font-size: 2.7em;
     line-height: 1.1em;
 }
 
@@ -38,11 +38,12 @@
 }
 
 #profile-details {
+	display: block;
+	background: #fff;	
+	margin: 5px 0 15px 0;
 	padding: 15px;
-	width: 70%;
-	float: right;
 }
-
+	
 .profile-action-menu {
 	float: left;
 	margin: 15px 10px;
