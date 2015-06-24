@@ -71,7 +71,7 @@ if ($count > $options['limit']) {
 	$script_text .= '<script type="text/javascript"> var istheremore = false; </script>';
 }
 // show the loading gif
-$activity .= '<img id="river_auto_update_loading" src="' . elgg_get_site_url() . '/mod/time_theme/graphics/loading.gif" height="25px;" style="display:none; margin-left:auto; margin-right:auto;">';
+$activity .= '<img id="river_auto_update_loading" src="' . elgg_get_site_url() . '/mod/time_theme_pro/graphics/loading.gif" height="25px;" style="display:none; margin-left:auto; margin-right:auto;">';
 
 $content = elgg_view('core/river/filter', array('selector' => $selector));
 
