@@ -47,7 +47,6 @@ $body = <<<__BODY
 __BODY;
 
 $body .= elgg_view('page/elements/topbar_wrapper', $vars);
-
 /*
 
   <div class="elgg-page-header">
@@ -60,7 +59,7 @@ $body .= elgg_view('page/elements/topbar_wrapper', $vars);
 $body .= <<<__BODY
 	<div class="sb-slidebar sb-left sb-style-overlay">
 		<div class="sliderbar-user-menu">
-		 $user_menu
+		 $user_menu		 
 		</div>
 		<div class="elgg-inner">
 			$navbar
@@ -68,7 +67,7 @@ $body .= <<<__BODY
 	</div>
 	<div class="elgg-page-body" id="sb-site" style="margin-top: 45px">
 		<div class="elgg-inner">
-			$content
+			$content			
 		</div>
 	</div>
 	<div class="elgg-page-footer">
