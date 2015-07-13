@@ -16,6 +16,11 @@ return array(
   'time_theme_pro:settings:slidebar' => "Left Sliderbar",
   'time_theme_pro:settings:slidebar_background_color' => "Background color",
   'time_theme_pro:settings:slidebar_a_color' => "Color links",
+  'time_theme_pro:settings:code' => 'Code injection',
+  'time_theme_pro:settings:code_help' => 'Insert useful things like tracking codes and meta tags',
+  'time_theme_pro:settings:header_code' => 'Head code',
+  'time_theme_pro:settings:footer_code' => 'Footer code',
+  'time_theme_pro:settings:sidebar_code' => 'Right Sidebar Code',
   'cover:edit' => 'Edit Cover',
   'cover:noaccess' => 'You are not allowed to edit this cover',
   'cover' =>'Cover Profile',
@@ -31,6 +36,6 @@ return array(
   'cover:remove:fail' => 'Error removing the cover',
   'cover:upload' => 'Upload an image',
   'cover:remove:success' => 'You have successfully deleted the cover',
-  'profile:show' => 'Profile information'
+  'profile:show' => 'Profile information',
 
 );

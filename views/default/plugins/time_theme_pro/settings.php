@@ -22,12 +22,12 @@ $theme_settings = array('topbar' => array('topbar_background_color','topbar_a_co
 	</ul>
 </div><br>
 <h4>Settings</h4>
-<table style="border:0px;width:50%; margin:10px">
+<table style="border:0px;width:80%; margin:10px">
 	<tr>
-		<td style="width:70%; padding:5px;">
+		<td style="width:40%; padding:5px;">
 			<?php echo elgg_echo('time_theme_pro:settings:background_type'); ?>
 		</td>
-		<td style="padding-bottom:5px;">		
+		<td style="width:60%; padding-bottom:5px;">		
 			<?php echo elgg_view('input/select', array(
 											'name' => 'params[background_type]',
 											'value' => $vars['entity']->background_type,
@@ -37,10 +37,10 @@ $theme_settings = array('topbar' => array('topbar_background_color','topbar_a_co
 	</td>
 	</tr>
 		<tr>
-		<td style="width:70%; padding:5px;">
+		<td style="width:40%; padding:5px;">
 			<?php echo elgg_echo('time_theme_pro:settings:extractability'); ?>
 		</td>
-		<td style="padding-bottom:5px;">	
+		<td style="width:60%; padding-bottom:5px;">	
 			<?php echo elgg_view('input/select', array(
 											'name' => 'params[extractability]',
 											'value' => $vars['entity']->extractability,
@@ -55,10 +55,10 @@ $theme_settings = array('topbar' => array('topbar_background_color','topbar_a_co
  	</tr>
  	<?php foreach ($attrs as $key => $value): ?>
 		<tr>
-			<td style="width:70%; padding:5px;">
+			<td style="width:40%; padding:5px;">
 				<?php echo elgg_echo('time_theme_pro:settings:'.$value); ?> 		
 			</td>
-			<td style="padding-bottom:5px;">							
+			<td style="width:60%; padding-bottom:5px;">							
 				<?php echo elgg_view('input/text', array(
 									  'name' => 'params['.$value.']',
 									  'value' => $vars['entity']->$value,
@@ -70,7 +70,7 @@ $theme_settings = array('topbar' => array('topbar_background_color','topbar_a_co
  	<?php endforeach ?>
 <?php endforeach ?>
 	<tr>
-		<td style="width:70%; padding:10px 0;">
+		<td style="width:40%; padding:10px 0;">
 		Set to default settings values</td>
 		<td style="padding:10px 0;">		
 		<?php 		
@@ -80,6 +80,47 @@ $theme_settings = array('topbar' => array('topbar_background_color','topbar_a_co
 			RESET		 	
 		 </a>
 		</td>
+	</tr>
+	<tr>
+ 		<td colspan="2"><label><?php echo elgg_echo('time_theme_pro:settings:code') ?></label><br>
+ 		<small><?php echo elgg_echo('time_theme_pro:settings:code_help') ?></small></td>
+ 	</tr>
+	<tr>
+			<td style="width:40%; padding:5px;">
+				<?php echo elgg_echo('time_theme_pro:settings:header_code'); ?> 		
+			</td>
+			<td style="width:60%; padding-bottom:5px;">							
+				<?php echo elgg_view('input/plaintext', array(
+									  'name' => 'params[header_code]',
+									  'value' => $vars['entity']->header_code,
+									  'id' => 'time_theme_pro_header_code', 
+									)); ?>			
+			</td>
+	</tr>
+	<tr>
+			<td style="width:40%; padding:5px;">
+				<?php echo elgg_echo('time_theme_pro:settings:footer_code'); ?> 		
+			</td>
+			<td style="width:60%; padding-bottom:5px;">							
+				<?php echo elgg_view('input/plaintext', array(
+									  'name' => 'params[footer_code]',
+									  'value' => $vars['entity']->footer_code,
+									  'id' => 'time_theme_pro_footer_code', 
+									  'cols' =>80
+									)); ?>			
+			</td>
+	</tr>
+	<tr>
+			<td style="width:40%; padding:5px;">
+				<?php echo elgg_echo('time_theme_pro:settings:sidebar_code'); ?> 		
+			</td>
+			<td style="width:60%; padding-bottom:5px;">							
+				<?php echo elgg_view('input/plaintext', array(
+									  'name' => 'params[sidebar_code]',
+									  'value' => $vars['entity']->sidebar_code,
+									  'id' => 'time_theme_pro_sidebar_code', 
+									)); ?>			
+			</td>
 	</tr>
 </table>
 

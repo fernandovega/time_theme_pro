@@ -49,30 +49,13 @@ if (isset($vars['body_attrs'])) {
 		}
 		<?php endif ?>
 		</style>
-		<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var $_Tawk_API={},$_Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/55766f9cf4bd4f9f6ae6dac5/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-<script type="text/javascript">
-var _urq = _urq || [];
-_urq.push(['initSite', '9dbb2fef-ac7c-4112-b0c0-bd1fa0854884']);
-(function() {
-var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
-ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
-})();
-</script>
+		<script type="text/javascript">
+		<?php echo elgg_get_plugin_setting('header_code', 'time_theme_pro') ?>
+		</script>
 	</head>
 	<body<?php echo $attrs ?>>
 		<?php echo $vars["body"]; ?>
+
+		<?php echo elgg_get_plugin_setting('footer_code', 'time_theme_pro') ?>
 	</body>
 </html>
