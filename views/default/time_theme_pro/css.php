@@ -541,3 +541,75 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   text-transform: none;
 }
+
+.profile #profile-owner-block img {
+width: 180px;
+height: 180px;
+}
+
+@media (max-width: 820px) {
+	.elgg-cover {
+	    background-size: 800px auto;
+	    height: 250px;
+	    width: 105%;
+	}
+
+	#profile-owner-block {
+    float: left;
+    height: 100px;
+    margin-top: 20px;
+    padding: 10px;
+	}
+
+	.elgg-profile-name {
+    float: left;
+    margin: 170px 40px 0 10px;
+	}
+
+	.profile h2 {
+    font-size: 2.0em;
+    line-height: 1.1em;
+	}
+
+	.profile .nickname {
+    font-size: 1.4em;
+    line-height: 1.1em;
+	}
+
+}
+@media (max-width: 600px) {
+	.elgg-cover {
+	    background-size: 600px auto;
+	    height: 250px;
+	    width: 100%;
+	}
+
+	#profile-owner-block {
+    float: left;
+    height: 100px;
+    margin-top: 20px;
+    padding: 10px;
+	}
+
+	.elgg-profile-name {
+    float: left;
+    margin: 10px 0 0 10px;
+	}
+
+	.profile h2 {
+    font-size: 1.7em;
+    line-height: 1.1em;
+	}
+
+	.profile .nickname {
+    font-size: 1.2em;
+    line-height: 1.1em;
+	}
+
+	.profile #profile-owner-block img {
+    width: 100px;
+    height: 100px;
+	}	
+
+
+}

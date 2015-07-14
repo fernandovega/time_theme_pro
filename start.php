@@ -192,12 +192,13 @@ function time_theme_pro_pagesetup() {
 		elgg_register_menu_item('topbar', array(
 			'name' => 'profile',
 			'href' => $viewer->getURL(),
+			'title' => $viewer->name,
 			'text' => elgg_view('output/img', array(
 				'src' => $viewer->getIconURL('small'),
 				'alt' => $viewer->name,
-				'title' => elgg_echo('profile'),
+				'title' => $viewer->name,
 				'class' => 'elgg-border-plain elgg-transition',
-			)).'<span class="profile-text">'.$viewer->name.'</span>',
+			)).'<span class="profile-text">'.elgg_get_excerpt($viewer->name, 20).'</span>',
 			'priority' => 500,
 			'link_class' => 'elgg-topbar-avatar',
 			'item_class' => 'elgg-avatar elgg-avatar-topbar',
@@ -236,10 +237,7 @@ function time_theme_pro_pagesetup() {
 		}
 
 	  elgg_unregister_menu_item('extras', 'rss');
-		/*if ($item) {
-			$item->setText('<i class="fa fa-rss fa-lg"></i>');
-			elgg_register_menu_item('extras', $item);
-		}*/
+	  
 		$url = elgg_format_url($url);
 		elgg_register_menu_item('extras', array(
 			'name' => 'rss',
@@ -643,7 +641,7 @@ function elgg_user_cover_hover_menu($hook, $type, $return, $params) {
 
 global $CONFIG;
 
-//if (!isset($CONFIG->cover_sizes)) { 
+if (!isset($CONFIG->cover_sizes)) { 
 	$cover_sizes = array(                
 				'topbar' => array('w' => 320, 'h' => 95, 'square' => FALSE, 'upscale' => FALSE),
 				'tiny' => array('w' => 900, 'h' => 200, 'square' => FALSE, 'upscale' => FALSE),
@@ -653,7 +651,7 @@ global $CONFIG;
 				'master' => array('w' => 1000, 'h' => 990, 'square' => FALSE, 'upscale' => FALSE),
 			  );
 	elgg_set_config('cover_sizes', $cover_sizes);
-//}
+}
 
 function getCoverIconUrl($size) {
 

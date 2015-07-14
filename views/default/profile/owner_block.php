@@ -13,7 +13,10 @@ if (!$user) {
 
 $icon = elgg_view_entity_icon($user, 'large', array(
 	'use_hover' => false,
-	'use_link' => false,
+	'href' => $user->getIconURL('master'),
+	'alt' => $user->name,
+	'title' => $user->name,
+	'link_class' => 'elgg-lightbox-photo',
 	'img_class' => 'photo u-photo',
 ));
 
