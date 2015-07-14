@@ -24,11 +24,6 @@ $background_type = elgg_get_plugin_setting('background_type', 'time_theme_pro');
 <?php // the width is on the page rather than topbar to handle small viewports ?>
 .elgg-page-default {  
   min-width: 800px;   
-<?php if($background_type=='imagen'): ?>
-  background: url("<?php echo elgg_get_site_url();?>mod/time_theme_pro/graphics/b1.jpg") no-repeat fixed center 0 <?php echo $content_background_color ?>;
-  <?php else:; ?>
-  background-color: <?php echo $content_background_color ?>
-  <?php endif; ?>
 }
 .elgg-page-default .elgg-page-header > .elgg-inner {
 	max-width: 990px;
