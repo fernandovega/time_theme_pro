@@ -13,7 +13,7 @@ $cover_imagen = elgg_view('output/img', array(
 $current_label = elgg_echo('cover:current');
 
 $remove_button = '';
-if ($vars['entity']->icontime) {
+if ($vars['entity']->covertime) {
 	$remove_button = elgg_view('output/url', array(
 		'text' => elgg_echo('remove'),
 		'title' => elgg_echo('avatar:remove'),
