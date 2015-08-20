@@ -62,8 +62,23 @@ function time_theme_pro_init() {
 	elgg_register_action("cover/remove", "$action_base/cover/remove.php");
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', 'elgg_user_cover_hover_menu');
 
+	elgg_register_page_handler('', 'time_theme_index');
+
 	//set default settings values 
 	time_theme_pro_set_defaults();
+}
+
+/**
+ * Serve the landing page
+ * 
+ * @return bool Whether the page was sent.
+ */
+function time_theme_index() {
+	if (!include_once(dirname(__FILE__) . "/index.php")) {
+		return false;
+	}
+
+	return true;
 }
 
 function river_auto_update_page_handler($page) {
@@ -159,8 +174,8 @@ function time_theme_pro_pagesetup() {
 		$text = '<i class="fa fa-users fa-lg"></i>';
 		$tooltip = elgg_echo("friends");
 		$href = "/friends/".$username;
-	  if (elgg_is_active_plugin('friend_request')) {
-	  	elgg_unregister_menu_item('topbar', 'friend_request');
+		if (elgg_is_active_plugin('friend_request')) {
+			elgg_unregister_menu_item('topbar', 'friend_request');
 			$options = array(
 				"type" => "user",
 				"count" => true,
@@ -175,7 +190,7 @@ function time_theme_pro_pagesetup() {
 				$tooltip = elgg_echo("friend_request:menu").": ".$count;
 				$href = "friend_request/" . $username;
 			}
-	  }
+		}
 
 		elgg_unregister_menu_item('topbar', 'friends');
 		elgg_register_menu_item('topbar', array(
@@ -294,6 +309,16 @@ function time_theme_pro_pagesetup() {
 			'contexts' => array('settings'),
 		));
 		
+	}
+	else{
+		elgg_register_menu_item('topbar', array(
+			'name' => 'login',
+			'text' => elgg_echo('login'),
+			'href' => "#login",
+			'priority' => 90,
+			'section' => 'alt',
+			'class' => 'btn btn-info go-login'
+		));
 	}
 }
 

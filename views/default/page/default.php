@@ -36,7 +36,7 @@ $messages = elgg_view('page/elements/messages', array('object' => $vars['sysmess
 $header = elgg_view('page/elements/header', $vars);
 $navbar = elgg_view('page/elements/navbar', $vars);
 $content = elgg_view('page/elements/body', $vars);
-$footer = elgg_view('page/elements/footer', $vars);
+//$footer = elgg_view('page/elements/footer', $vars);
 $user_menu = elgg_view('page/elements/sidebar', $vars);
 
 $body = <<<__BODY
@@ -68,11 +68,6 @@ $body .= <<<__BODY
 	<div class="elgg-page-body" id="sb-site" style="margin-top: 45px">
 		<div class="elgg-inner">
 			$content			
-		</div>
-	</div>
-	<div class="elgg-page-footer">
-		<div class="elgg-inner">
-			$footer
 		</div>
 	</div>
 </div>
