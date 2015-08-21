@@ -22,9 +22,8 @@ $top_box = $vars['login'];
                 <div>
                     <div class="container">
                         <div class="hero-unit">
-                            <h1>Find a perfect suit for
-                            <br class="hidden-phone">
-                            your startup 
+                            <h1>
+                            <?php echo elgg_echo('landing_page:text1') ?>
                             </h1>
                         </div>
                     </div>
@@ -35,8 +34,8 @@ $top_box = $vars['login'];
              <!-- content-11  -->
             <section class="content-11">
                 <div class="container">
-                    <span>You have the design, you have the code</span>
-                    <a class="btn btn-large btn-danger go-login" href="#">TRY IT NOW</a>
+                    <span><?php echo elgg_echo('landing_page:text2') ?></span>
+                    <a class="btn btn-large btn-danger go-login" href="#"><?php echo elgg_echo('landing_page:try') ?></a>
                 </div>
             </section>
 
@@ -46,14 +45,13 @@ $top_box = $vars['login'];
                     <div class="container">
                         <img src="/mod/time_theme_pro/graphics/landing_page/responsive.png" width="512" height="355" alt="">
 
-                        <h3>Take a look to our amazing Kit</h3>
+                        <h3><?php echo elgg_echo('landing_page:text3') ?></h3>
 
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <p>We have a great surprise for Designmodo fans – our first free HTML user interface kit.
-                                    Flat UI Free is made on the basis of Twitter Bootstrap in a stunning flat-style.
+                                <p><?php echo elgg_echo('landing_page:text4') ?>
                                 </p>
-                                <a class="btn btn-large btn-clear go-login" href="#">TRY IT NOW</a>
+                                <a class="btn btn-large btn-clear go-login" href="#"><?php echo elgg_echo('landing_page:try') ?></a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +64,7 @@ $top_box = $vars['login'];
                 <div>
                     <div class="container">
                         <div class="hero-unit hero-unit-bordered">
-                            <h1>Scenic Nature</h1>
+                            <h1><?php echo elgg_echo('landing_page:text5') ?></h1>
                         </div>
                     </div>
                 </div>
@@ -78,7 +76,7 @@ $top_box = $vars['login'];
                 <div>
 
                     <div class="container">
-                        <h3>Sign in or Sign Up </h3>
+                        <h3><?php echo elgg_echo('landing_page:text6') ?></h3>
                        
                         <div class="row v-center">
                             <div class="col-sm-4">
@@ -117,25 +115,7 @@ $top_box = $vars['login'];
                 </div>
                 <a class="control-btn fui-arrow-down" href="#"> </a>
             </section>
-
-            
-            <section class="content-8 v-center">
-                <div>
-                    <div class="container">
-                        <img width="380" height="187" alt="" src="img/ticket-red@2x.png"/>
-                        <h3>Twenty Five Awesome Samples</h3>
-                        <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3">
-                                <p>
-                                    The most important part of the Startup Framework is the samples.
-                                    The samples form a set of 25 usable pages or you can add new blocks from UI Kit.
-                                </p>
-                                <a class="btn btn-large btn-clear" href="#">TRY IT NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
+            -->
 
            
 
@@ -154,15 +134,15 @@ $top_box = $vars['login'];
                 <div class="container">
                     <div class="row v-center">
                         <div class="col-sm-2">
-                            <a class="brand" href="#">Startup</a>
+                            <a class="brand" href="#"><?php echo elgg_get_config('sitename') ?></a>
                         </div>
                         <div class="col-sm-7">
                              <?php echo elgg_view_menu('footer', array('sort_by' => 'priority', 'class' => 'elgg-menu-hz')); ?>
                         </div>
                         <div class="col-sm-3">
-                            <h6>New York, NY</h6>
+                            <h6><?php echo elgg_echo('landing_page:contact_name') ?></h6>
                             <div class="address">
-                                62 West 55th Street, Suite 302<br>New York, NY, 10230
+                                <?php echo elgg_echo('landing_page:contact_data') ?>
                             </div>
                         </div>
                     </div>

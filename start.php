@@ -311,14 +311,19 @@ function time_theme_pro_pagesetup() {
 		
 	}
 	else{
-		elgg_register_menu_item('topbar', array(
-			'name' => 'login',
-			'text' => elgg_echo('login'),
-			'href' => "#login",
-			'priority' => 90,
-			'section' => 'alt',
-			'class' => 'btn btn-info go-login'
-		));
+		if (elgg_get_context()=='main')
+			$href= "#login";
+		else
+			$href= "/#login";
+
+			elgg_register_menu_item('topbar', array(
+				'name' => 'login',
+				'text' => elgg_echo('login'),
+				'href' => $href,
+				'priority' => 90,
+				'section' => 'alt',
+				'class' => 'btn btn-info elgg-button elgg-button-submit go-login'
+			));
 	}
 }
 
