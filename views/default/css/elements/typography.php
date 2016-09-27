@@ -32,6 +32,7 @@ body {
   <?php else:; ?>
   background-color: <?php echo $content_background_color ?>
   <?php endif; ?>
+  background-size: 100%;
 }
 
 
@@ -45,6 +46,11 @@ a:hover,
 a.selected { <?php //@todo remove .selected ?>
 	color: #555;
 	text-decoration: underline;
+}
+
+a.close-sidebar{
+	float: right;
+	margin: 10px;
 }
 
 p {

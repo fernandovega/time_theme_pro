@@ -470,7 +470,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #elgg-profile-actions{
-  display: none;
   background: #000;
   bottom: 0;
   margin: 10px;

@@ -26,7 +26,7 @@ if (isset($vars['body_attrs'])) {
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 		<style type="text/css">
-		<?php if (elgg_is_logged_in() && elgg_get_context()!='admin') : ?>
+		<?php //if (elgg_is_logged_in() && elgg_get_context()!='admin') : ?>
 		@media (max-width: 820px) {
 				.logo, .elgg-sidebar{
 					display: none;
@@ -47,11 +47,12 @@ if (isset($vars['body_attrs'])) {
 					display: block;
 			}	
 		}
-		<?php endif ?>
+		<?php //endif ?>
 		</style>
 		<script type="text/javascript">
-		<?php echo elgg_get_plugin_setting('header_code', 'time_theme_pro') ?>
+		<?php //echo elgg_get_plugin_setting('header_code', 'time_theme_pro') ?>
 		</script>
+		<script type="text/javascript" src="/mod/time_theme_pro/views/default/lib/slidebars/slidebars.js"></script>
 	</head>
 	<body<?php echo $attrs ?>>
 		<?php echo $vars["body"]; ?>

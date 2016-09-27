@@ -14,7 +14,7 @@ function time_theme_pro_init() {
 	// theme specific CSS
 	elgg_extend_view('css/elgg', 'time_theme_pro/css');
 	// theme specific CSS
-	elgg_extend_view('css/elgg', 'extractability/css');
+	//elgg_extend_view('css/elgg', 'extractability/css');
 
 	
 	elgg_register_plugin_hook_handler('head', 'page', 'time_theme_pro_setup_head');
@@ -23,6 +23,7 @@ function time_theme_pro_init() {
 	elgg_unregister_plugin_hook_handler('register', 'menu:entity', 'likes_entity_menu_setup');
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', '_elgg_river_menu_setup');
 	elgg_unregister_plugin_hook_handler('register', 'menu:entity', '_elgg_entity_menu_setup');
+	elgg_unregister_plugin_hook_handler('register', 'menu:topbar', 'messages_register_topbar');
 
 	elgg_register_plugin_hook_handler('register', 'menu:river', '_my_elgg_river_menu_setup');
 	elgg_register_plugin_hook_handler('register', 'menu:entity', '_my_elgg_entity_menu_setup');
@@ -30,11 +31,17 @@ function time_theme_pro_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:entity', 'my_likes_entity_menu_setup', 401);
 
 	elgg_unregister_widget_type('river_widget');
-	elgg_register_js('slidebars', 'mod/time_theme_pro/lib/slidebars/slidebars.js', 'head');
-	elgg_register_css('slidebars', 'mod/time_theme_pro/lib/slidebars/slidebars.css');
-	elgg_register_js('flowplayer', 'mod/time_theme_pro/lib/flowplayer/flowplayer.min.js', 'head');
-	elgg_register_css('flowplayer', 'mod/time_theme_pro/lib/flowplayer/minimalist.css');
-	elgg_register_css('font-awesome', 'mod/time_theme_pro/lib/font-awesome/css/font-awesome.min.css');
+	//elgg_extend_view('elgg.js', 'elgg/ckeditor/set-basepath.js');
+	//elgg_extend_view('elgg.js', 'lib/slidebars/slidebars.js');
+	$slidebars = elgg_get_simplecache_url('lib/slidebars/slidebars.js');
+  elgg_register_js('slidebars', $slidebars, 'footer');
+	elgg_register_js('flowplayer', elgg_get_simplecache_url('lib/flowplayer/flowplayer.min.js'), 'footer');
+	elgg_register_css('flowplayer', elgg_get_simplecache_url('lib/flowplayer/minimalist.css'));
+	//elgg_register_css('font-awesome', 'mod/time_theme_pro/lib/font-awesome/css/font-awesome.min.css');
+	
+	// extend js view
+	 elgg_extend_view('elgg.js', "js/time_theme_pro/functions.js");
+
 
 	$base = elgg_get_plugins_path() . 'time_theme_pro';
 	
@@ -47,8 +54,6 @@ function time_theme_pro_init() {
 	elgg_unregister_page_handler('activity', 'elgg_river_page_handler');
 	elgg_register_page_handler('activity', 'river_auto_update_page_handler');
 	
-	// extend js view
-	elgg_extend_view("js/elgg", "js/time_theme_pro/functions");
 
 	//reset action
 	$action_base = elgg_get_plugins_path() . 'time_theme_pro/actions';
@@ -56,7 +61,7 @@ function time_theme_pro_init() {
 
 	//cover
 	elgg_register_page_handler('cover', 'elgg_cover_page_handler');
-	elgg_register_js('cover_cropper', 'mod/time_theme_pro/lib/cover/ui.cover_cropper.js');
+	elgg_register_js('cover_cropper', 'mod/time_theme_pro/views/default/lib/cover/ui.cover_cropper.js');
 	elgg_register_action("cover/upload", "$action_base/cover/upload.php");
 	elgg_register_action("cover/crop", "$action_base/cover/crop.php");
 	elgg_register_action("cover/remove", "$action_base/cover/remove.php");
@@ -132,6 +137,7 @@ function time_theme_pro_pagesetup() {
 
 	elgg_register_menu_item('topbar', array(
 		'name' => 'sidebar',
+		'id' => 'open-slidebar',
 		'href' => "#",
 		'text' => '<i class="sb-toggle-left fa fa-bars fa-lg"></i>',
 		'priority' => 50,
@@ -143,8 +149,9 @@ function time_theme_pro_pagesetup() {
 	if (elgg_is_logged_in()) {
 		$user = elgg_get_logged_in_user_entity();
 		$username = $user->username;		
-
-		elgg_unregister_menu_item('topbar','messages');
+		
+		elgg_unregister_menu_item('menu:topbar','messages');
+		//elgg_register_plugin_hook_handler('register', 'menu:topbar', 'messages_register_topbar');
 		$text = "<i class=\"fa fa-envelope fa-lg\"></i>";
 		$tooltip = elgg_echo("messages");
 		// get unread messages

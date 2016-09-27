@@ -77,16 +77,6 @@ $content = elgg_view('core/river/filter', array('selector' => $selector));
 
 $sidebar = elgg_view('core/river/sidebar');
 
-$script_text .= '<script type="text/javascript">
-
- $(window).scroll(function() {   
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {			
-		loadMore();		
-   }
-});
-
-</script>';
-
 
 $params = array(
 	'title' => $title,

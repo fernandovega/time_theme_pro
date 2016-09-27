@@ -24,8 +24,7 @@ if (elgg_get_context() == 'admin') {
 	return true;
 }
 
-elgg_load_css('font-awesome');
-elgg_load_js('slidebars');
+//elgg_load_js('slidebars');
 elgg_load_js('flowplayer');
 elgg_load_css('flowplayer');
 
@@ -58,6 +57,8 @@ $body .= elgg_view('page/elements/topbar_wrapper', $vars);
 
 $body .= <<<__BODY
 	<div class="sb-slidebar sb-left sb-style-overlay">
+		<a href="#" id="open-slidebar" class="close-sidebar"><i class="fa fa-close fa-lg"></i></a>
+		<br>
 		<div class="sliderbar-user-menu">
 		 $user_menu		 
 		</div>
@@ -71,15 +72,6 @@ $body .= <<<__BODY
 		</div>
 	</div>
 </div>
-<script>
-  (function($) {
-    $(document).ready(function() {
-      $.slidebars();
-    });
-
-    
-  }) (jQuery);
-</script>
 __BODY;
 
 $body .= elgg_view('page/elements/foot');

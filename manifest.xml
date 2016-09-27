@@ -3,7 +3,7 @@
 	<name>Time Theme Pro</name>
 	<id>time_theme_pro</id>
 	<author>Fernando Vega</author>
-	<version>1.5</version>
+	<version>2.0</version>
 	<category>bundled</category>
 	<category>theme</category>
 	<description>Clean Responsive Elgg Professional Theme</description>
@@ -12,7 +12,7 @@
 	<license>GNU General Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
-		<version>1.9</version>
+		<version>2.0</version>
 	</requires>
 	<requires>
 		<type>priority</type>
